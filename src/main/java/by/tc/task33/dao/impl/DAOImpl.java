@@ -3,6 +3,7 @@ package by.tc.task33.dao.impl;
 import by.tc.task33.dao.DAO;
 import by.tc.task33.dao.DAOException;
 import by.tc.task33.dao.parser.ParserException;
+import by.tc.task33.dao.parser.impl.DOMParser;
 import by.tc.task33.dao.parser.impl.SAXFile;
 import by.tc.task33.entity.Medicine;
 
@@ -25,7 +26,14 @@ public class DAOImpl implements DAO {
             filePath = filePath.replaceAll(OPEN_SQUARE, OPEN);
             filePath = filePath.replaceAll(CLOSE_SQUARE, CLOSE);
         }
-        SAXFile saxFile = new SAXFile(filePath);
+
+        DOMParser domParser = new DOMParser();
+
+        domParser.parse(filePath);
+        List<Medicine> medicines = domParser.getMedicines();
+        return medicines;
+
+        /*SAXFile saxFile = new SAXFile(filePath);
         List<Medicine> medicines;
         try {
             saxFile.readFile();
@@ -33,6 +41,6 @@ public class DAOImpl implements DAO {
             return medicines;
         } catch (ParserException e) {
             throw new DAOException(e.getMessage());
-        }
+        }*/
     }
 }

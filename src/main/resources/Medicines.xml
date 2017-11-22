@@ -22,7 +22,7 @@
                     <measuring>1</measuring>
                     <frequency>3 раза в день</frequency>
                 </dosage>
-                <pharmacySale>Без рецепта</pharmacySale>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
             </version>
         </versions>
     </medicine>
