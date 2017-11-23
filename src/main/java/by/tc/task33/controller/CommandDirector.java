@@ -1,8 +1,8 @@
 package by.tc.task33.controller;
 
 import by.tc.task33.controller.command.Command;
-import by.tc.task33.controller.command.impl.SAXParsing;
 import by.tc.task33.controller.command.impl.DOMParsing;
+import by.tc.task33.controller.command.impl.SAXParsing;
 import by.tc.task33.controller.command.impl.StAXParsing;
 
 import java.util.HashMap;

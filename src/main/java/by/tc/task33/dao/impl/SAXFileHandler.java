@@ -1,6 +1,6 @@
-package by.tc.task33.dao.parser.impl;
+package by.tc.task33.dao.impl;
 
-import by.tc.task33.dao.parser.XMLConst;
+import by.tc.task33.dao.XMLConst;
 import by.tc.task33.entity.Dosage;
 import by.tc.task33.entity.Medicine;
 import by.tc.task33.entity.MedicineType;
@@ -12,8 +12,9 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SAXParser extends DefaultHandler{
+public class SAXFileHandler extends DefaultHandler{
 
+    private static final String EMPTY_STRING = "";
     private Medicine medicine;
     private String currentElement;
     private MedicineType medicineType;
@@ -23,8 +24,8 @@ public class SAXParser extends DefaultHandler{
     private List<MedicineType> versions;
     private List<Medicine> medicines;
 
-    SAXParser() {
-        currentElement = "";
+    SAXFileHandler() {
+        currentElement = EMPTY_STRING;
     }
 
     List<Medicine> getMedicines() {
@@ -35,6 +36,7 @@ public class SAXParser extends DefaultHandler{
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
         currentElement = qName;
+
         switch (currentElement.toLowerCase()){
             case XMLConst.MEDICINES:
                 medicines = new ArrayList<>();
@@ -109,6 +111,6 @@ public class SAXParser extends DefaultHandler{
     
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        currentElement = "";
+        currentElement = EMPTY_STRING;
     }
 }

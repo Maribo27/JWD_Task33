@@ -4,20 +4,21 @@ import by.tc.task33.dao.DAO;
 import by.tc.task33.dao.DAOException;
 import by.tc.task33.dao.DAOFactory;
 import by.tc.task33.entity.Medicine;
-import by.tc.task33.service.EntityService;
+import by.tc.task33.service.Service;
 import by.tc.task33.service.ServiceException;
 
 import java.util.List;
 
-public class EntityServiceImpl implements EntityService {
+public class SAXParserService implements Service {
 
-    public List<Medicine> getMedicineList() throws ServiceException {
+    public List<Medicine> getMedicineList(String filePath) throws ServiceException {
 
         DAOFactory factory = DAOFactory.getInstance();
-        DAO entityDAO = factory.getEntityDAO();
+        DAO entityDAO = factory.getSAXParser();
         List<Medicine> medicines;
         try {
-            medicines = entityDAO.getMedicineList();
+            entityDAO.parseFile(filePath);
+            medicines = entityDAO.getMedicines();
             return medicines;
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage());

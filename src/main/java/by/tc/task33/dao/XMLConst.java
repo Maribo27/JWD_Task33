@@ -1,4 +1,4 @@
-package by.tc.task33.dao.parser;
+package by.tc.task33.dao;
 
 /**
  * Created by Maria on 26.04.2017.
@@ -14,6 +14,7 @@ public class XMLConst {
     public static final String VERSIONS = "versions";
     public static final String VERSION = "version";
     public static final String TYPE = "type";
+    public static final String PACKAGE = "package";
     public static final String PACKAGE_TYPE = "package_type";
     public static final String MEDICINE_COUNT = "medicine_count";
     public static final String PRICE = "price";
