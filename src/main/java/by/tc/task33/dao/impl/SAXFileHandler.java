@@ -55,6 +55,7 @@ public class SAXFileHandler extends DefaultHandler{
                 break;
             case XMLConst.VERSION:
                 medicineType = new MedicineType();
+                medicineType.setType(attributes.getValue(XMLConst.TYPE));
                 versions.add(medicineType);
                 break;
             case XMLConst.PRICE:
@@ -84,9 +85,6 @@ public class SAXFileHandler extends DefaultHandler{
                 break;
             case XMLConst.ANALOG:
                 analogs.add(elementValue);
-                break;
-            case XMLConst.TYPE:
-                medicineType.setType(elementValue);
                 break;
             case XMLConst.PACKAGE_TYPE:
                 medicineType.setPackageType(elementValue);

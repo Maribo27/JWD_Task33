@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema
-        elementFormDefault="qualified"
-        targetNamespace="http://www.verkkokauppa.com"
-        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.epam.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="medicines">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="medicine">
+        <xs:element name="medicine" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
               <xs:element type="xs:string" name="name"/>
@@ -42,7 +39,7 @@
                                   <xs:complexType>
                                     <xs:simpleContent>
                                       <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="currency"/>
+                                        <xs:attribute type="xs:string" name="currency" use="required"/>
                                       </xs:extension>
                                     </xs:simpleContent>
                                   </xs:complexType>
@@ -60,7 +57,7 @@
                           </xs:element>
                           <xs:element type="xs:string" name="pharmacy_sale"/>
                         </xs:sequence>
-                        <xs:attribute type="xs:string" name="type"/>
+                        <xs:attribute type="xs:string" name="type" use="required"/>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>

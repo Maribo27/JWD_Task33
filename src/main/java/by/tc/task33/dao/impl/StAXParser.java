@@ -116,6 +116,8 @@ public class StAXParser implements DAO {
 
 	private void startElement(XMLEvent event) {
 		StartElement startElement = event.asStartElement();
+		Iterator<Attribute> attributes;
+		String attribute;
 		currentElement = startElement.getName().getLocalPart();
 
 		switch(currentElement) {
@@ -136,13 +138,16 @@ public class StAXParser implements DAO {
 				break;
 			case XMLConst.VERSION:
 				medicineType = new MedicineType();
+				attributes = startElement.getAttributes();
+				attribute = attributes.next().getValue();
+				medicineType.setType(attribute);
 				versions.add(medicineType);
 				break;
 			case XMLConst.PRICE:
 				price = new Price();
-				Iterator<Attribute> attributes = startElement.getAttributes();
-				String rollNo = attributes.next().getValue();
-				price.setCurrency(rollNo);
+				attributes = startElement.getAttributes();
+				attribute = attributes.next().getValue();
+				price.setCurrency(attribute);
 				medicineType.setPrice(price);
 				break;
 			case XMLConst.DOSAGE:

@@ -69,8 +69,8 @@ public class DOMParser implements DAO {
 				List<MedicineType> versions = createMedicineTypes(versionNodes);
 				medicine.setVersions(versions);
 
-				NodeList analogNodes = element.getElementsByTagName(XMLConst.ANALOGS);
-				List<String> analogs = createAnalogs((Element) medicineNode, analogNodes);
+				NodeList analogNodes = element.getElementsByTagName(XMLConst.ANALOG);
+				List<String> analogs = createAnalogs(analogNodes);
 				medicine.setAnalogs(analogs);
 
 				medicines.add(medicine);
@@ -160,7 +160,7 @@ public class DOMParser implements DAO {
 		return price;
 	}
 
-	private List<String> createAnalogs(Element medicineNode, NodeList analogNodes) {
+	private List<String> createAnalogs(NodeList analogNodes) {
 		List<String> analogs = new ArrayList<>();
 
 		for (int analogCounter = 0; analogCounter < analogNodes.getLength(); analogCounter++) {
@@ -168,7 +168,8 @@ public class DOMParser implements DAO {
 
 			boolean elementNode = analogNode.getNodeType() == Node.ELEMENT_NODE;
 			if (elementNode) {
-				String analog = medicineNode.getElementsByTagName(XMLConst.ANALOG).item(0).getTextContent();
+				Element element = (Element) analogNode;
+				String analog = element.getTextContent();
 				analogs.add(analog);
 			}
 		}
