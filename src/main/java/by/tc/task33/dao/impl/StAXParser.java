@@ -100,7 +100,7 @@ public class StAXParser implements DAO {
 				medicineType.setCount(element);
 				break;
 			case XMLConst.PRICE:
-				price.setValue(Integer.parseInt(element));
+				price.setValue(Double.parseDouble(element));
 				break;
 			case XMLConst.MEASURING:
 				dosage.setDose(element);

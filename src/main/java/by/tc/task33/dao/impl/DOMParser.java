@@ -158,7 +158,7 @@ public class DOMParser implements DAO {
 
 		Price price = new Price();
 		price.setCurrency(currency);
-		price.setValue(Integer.parseInt(priceValue));
+		price.setValue(Double.parseDouble(priceValue));
 
 		return price;
 	}

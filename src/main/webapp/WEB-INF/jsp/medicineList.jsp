@@ -23,27 +23,26 @@
             <c:when test = "${requestScope.size - 1 < requestScope.end}">
                 <c:forEach items="${requestScope.medicine}" var="med" begin="${requestScope.begin}" end="${requestScope.size - 1}">
                     <tr>
-                        <td rowspan="${med.versions.size}"><c:out value="${med.id}"/></td>
-                        <td rowspan="${med.versions.size}"><c:out value="${med.name}"/></td>
-                        <td rowspan="${med.versions.size}"><c:out value="${med.pharm}"/></td>
-                        <td rowspan="${med.versions.size}"><c:out value="${med.group}"/></td>
+                        <td><c:out value="${med.id}"/></td>
+                        <td><c:out value="${med.name}"/></td>
+                        <td><c:out value="${med.pharm}"/></td>
+                        <td><c:out value="${med.group}"/></td>
 
-                        <td rowspan="${med.versions.size}">
+                        <td>
                             <c:forEach items="${med.analogs}" var="analog">
                                 <c:out value="${analog}"/><br>
                             </c:forEach>
                         </td>
-
+                        <td>
                             <c:forEach items="${med.versions}" var="version">
-                                <td>
-                                type: <c:out value="${version.type}"/><br>
-                                package type: <c:out value="${version.packageType}"/><br>
-                                count: <c:out value="${version.count}"/><br>
-                                price: <c:out value="${version.price}"/><br>
-                                dosage: <c:out value="${version.dosage}"/><br>
-                                pharmacy sale: <c:out value="${version.pharmacySale}"/><br>
-                                </td>
+                                <br><c:out value="${version.type}"/><br>
+                                Упаковка: <c:out value="${version.packageType}"/><br>
+                                Количество: <c:out value="${version.count}"/><br>
+                                Цена: <c:out value="${version.price}"/><br>
+                                Дозировка: <c:out value="${version.dosage}"/><br>
+                                Отпуск из аптеки: <c:out value="${version.pharmacySale}"/><br>
                             </c:forEach>
+                        </td>
                     </tr>
                 </c:forEach>
             </c:when>
@@ -85,6 +84,7 @@
         </c:when>
 
         <c:when test = "${requestScope.next == 1}">
+            Страница: <c:out value="${requestScope.next}"/>/<c:out value="${requestScope.last + 1}"/>
             <form action="Controller" method="get">
                 <input type="hidden" name="command" value="${requestScope.parser}"/>
                 <input type="hidden" name="page" value="${requestScope.next + 1}"/>
@@ -106,6 +106,7 @@
             <form action="Controller" method="get">
                 <input type="hidden" name="command" value="${requestScope.parser}"/>
                 <input type="submit" name="page" value="${requestScope.prev + 1}"/>
+                Страница: <c:out value="${requestScope.next}"/>/<c:out value="${requestScope.last + 1}"/>
             </form>
         </c:when>
 
@@ -118,6 +119,7 @@
             <form action="Controller" method="get">
                 <input type="hidden" name="command" value="${requestScope.parser}"/>
                 <input type="submit" name="page" value="${requestScope.prev + 1}" />
+                Страница: <c:out value="${requestScope.next}"/>/<c:out value="${requestScope.last + 1}"/>
                 <input type="submit" name="page" value="${requestScope.next + 1}"/>
             </form>
             <form action="Controller" method="get">

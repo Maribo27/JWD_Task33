@@ -153,7 +153,7 @@
         <pharm>Божечки</pharm>
         <group>Комплексное</group>
         <analogs>
-            <analog analog_id="1">Благословение божье</analog>
+            <analog analog_id="1">Благословение Божье</analog>
         </analogs>
         <versions>
             <version type="Вода">
@@ -166,7 +166,7 @@
                     <measuring>1 стакан</measuring>
                     <frequency>натощак</frequency>
                 </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
+                <pharmacy_sale>На всё воля Божья</pharmacy_sale>
             </version>
         </versions>
     </medicine>
