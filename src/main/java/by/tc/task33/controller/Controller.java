@@ -20,6 +20,7 @@ import static com.sun.deploy.net.HttpRequest.CONTENT_TYPE;
 
 public class Controller extends HttpServlet {
 
+    private static final int ROWS_ON_PAGE = 4;
     private final CommandDirector director = new CommandDirector();
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +32,7 @@ public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType(CONTENT_TYPE);
-        int page = Integer.parseInt(request.getParameter("page"));
+        int page = Integer.parseInt(request.getParameter("page")) - 1;
 
         String parserType = request.getParameter(COMMAND).toUpperCase();
         Command command = director.getCommand(parserType);
@@ -44,13 +45,19 @@ public class Controller extends HttpServlet {
 
             if (medicines != null && medicines.size() > 0) {
                 request.setAttribute(MEDICINE_ATTRIBUTE, medicines);
-                request.setAttribute(BEGIN_ATTRIBUTE, page * 4);
-                request.setAttribute(END_ATTRIBUTE, page * 4 + 3);
+                request.setAttribute(BEGIN_ATTRIBUTE, page * ROWS_ON_PAGE);
+                request.setAttribute(END_ATTRIBUTE, page * ROWS_ON_PAGE + 3);
+                request.setAttribute(SIZE_ATTRIBUTE, medicines.size());
                 request.setAttribute(PARSER_ATTRIBUTE, parserType);
                 request.setAttribute(FIRST_ATTRIBUTE, 0);
                 request.setAttribute(PREV_ATTRIBUTE, page - 1);
                 request.setAttribute(NEXT_ATTRIBUTE,page + 1);
-                request.setAttribute(LAST_ATTRIBUTE, medicines.size());
+                int lastPage = medicines.size() / ROWS_ON_PAGE - 1;
+                if (medicines.size() / ROWS_ON_PAGE != 0){
+                    lastPage++;
+                }
+                request.setAttribute(LAST_ATTRIBUTE, lastPage);
+                request.setAttribute(PAGE_ATTRIBUTE, ROWS_ON_PAGE);
                 requestDispatcher = request.getRequestDispatcher(INFO_PAGE_URL);
                 requestDispatcher.forward(request, response);
             } else {

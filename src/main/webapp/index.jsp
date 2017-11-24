@@ -11,17 +11,17 @@
 <body>
 <div class="container">
     <form action="Controller" method="get">
-        <input type="hidden" name="page" value="0"/>
+        <input type="hidden" name="page" value="1"/>
         <input type="hidden" name="command" value="SAX"/>
         <input type="submit" value="SAX"/>
     </form>
     <form action="Controller" method="get">
-        <input type="hidden" name="page" value="0"/>
+        <input type="hidden" name="page" value="1"/>
         <input type="hidden" name="command" value="STAX"/>
         <input type="submit" value="StAX"/>
     </form>
     <form action="Controller" method="get">
-        <input type="hidden" name="page" value="0"/>
+        <input type="hidden" name="page" value="1"/>
         <input type="hidden" name="command" value="DOM"/>
         <input type="submit" value="DOM"/>
     </form>

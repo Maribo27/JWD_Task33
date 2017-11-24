@@ -27,7 +27,7 @@
               <xs:element name="versions">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="version">
+                    <xs:element name="version" maxOccurs="unbounded" minOccurs="0">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="package">

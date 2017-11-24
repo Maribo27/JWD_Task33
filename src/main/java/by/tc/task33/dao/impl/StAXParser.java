@@ -126,6 +126,9 @@ public class StAXParser implements DAO {
 				break;
 			case XMLConst.MEDICINE:
 				medicine = new Medicine();
+				attributes = startElement.getAttributes();
+				attribute = attributes.next().getValue();
+				medicine.setId(Integer.parseInt(attribute));
 				medicines.add(medicine);
 				break;
 			case XMLConst.ANALOGS:

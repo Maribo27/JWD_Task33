@@ -56,6 +56,9 @@ public class DOMParser implements DAO {
 			if (medicineNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element element = (Element) medicineNode;
 
+				String id = element.getAttribute(XMLConst.ID);
+				medicine.setId(Integer.parseInt(id));
+
 				String name = element.getElementsByTagName(XMLConst.NAME).item(0).getTextContent();
 				medicine.setName(name);
 

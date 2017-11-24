@@ -7,6 +7,7 @@ public class Medicine implements Serializable {
     private String name;
     private String pharm;
     private String group;
+    private int id;
     private List<String> analogs;
     private List<MedicineType> versions;
 
@@ -35,6 +36,14 @@ public class Medicine implements Serializable {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<String> getAnalogs() {

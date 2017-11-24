@@ -43,6 +43,8 @@ public class SAXFileHandler extends DefaultHandler{
                 break;
             case XMLConst.MEDICINE:
                 medicine = new Medicine();
+                String id = attributes.getValue(XMLConst.ID);
+                medicine.setId(Integer.parseInt(id));
                 medicines.add(medicine);
                 break;
             case XMLConst.ANALOGS:
@@ -93,7 +95,7 @@ public class SAXFileHandler extends DefaultHandler{
                 medicineType.setCount(elementValue);
                 break;
             case XMLConst.PRICE:
-                price.setValue(new Integer(elementValue));
+                price.setValue(new Double(elementValue));
                 break;
             case XMLConst.MEASURING:
                 dosage.setDose(elementValue);

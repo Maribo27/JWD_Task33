@@ -13,10 +13,10 @@ public class SAXParserService implements Service {
 
     public List<Medicine> getMedicineList(String filePath) throws ServiceException {
 
-        DAOFactory factory = DAOFactory.getInstance();
-        DAO entityDAO = factory.getSAXParser();
-        List<Medicine> medicines;
         try {
+            DAOFactory factory = DAOFactory.getInstance();
+            DAO entityDAO = factory.getSAXParser();
+            List<Medicine> medicines;
             entityDAO.parseFile(filePath);
             medicines = entityDAO.getMedicines();
             return medicines;

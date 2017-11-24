@@ -13,10 +13,10 @@ public class StAXParserService implements Service {
 
     public List<Medicine> getMedicineList(String filePath) throws ServiceException {
 
-        DAOFactory factory = DAOFactory.getInstance();
-        DAO entityDAO = factory.getStAXParser();
-        List<Medicine> medicines;
         try {
+            DAOFactory factory = DAOFactory.getInstance();
+            DAO entityDAO = factory.getStAXParser();
+            List<Medicine> medicines;
             entityDAO.parseFile(filePath);
             medicines = entityDAO.getMedicines();
             return medicines;

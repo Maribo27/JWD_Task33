@@ -16,4 +16,6 @@ class ControlConst {
     static final String PREV_ATTRIBUTE = "prev";
     static final String NEXT_ATTRIBUTE = "next";
     static final String LAST_ATTRIBUTE = "last";
+    static final String SIZE_ATTRIBUTE = "size";
+    static final String PAGE_ATTRIBUTE = "page";
 }

@@ -4,12 +4,10 @@
            xs:schemaLocation="">
     <medicine id="1">
         <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
+        <pharm>Фирма 1</pharm>
         <group>Болеутоляющее</group>
         <analogs>
             <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
@@ -19,8 +17,8 @@
                     <price currency="BYN">2</price>
                 </package>
                 <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
+                    <measuring>1 таблетка</measuring>
+                    <frequency>2 раза в день</frequency>
                 </dosage>
                 <pharmacy_sale>Без рецепта</pharmacy_sale>
             </version>
@@ -28,20 +26,18 @@
     </medicine>
 
     <medicine id="2">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
+        <name>Анальгин</name>
+        <pharm>Не та фирма, что у аспирина</pharm>
         <group>Болеутоляющее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Аспирин</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
                 <package>
                     <package_type>Блистер</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">1.50</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -53,20 +49,20 @@
     </medicine>
 
     <medicine id="3">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
+        <name>Ношпа</name>
+        <pharm>ШараМед</pharm>
         <group>Болеутоляющее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Дротаверин</analog>
+            <analog analog_id="2">Спазматон</analog>
+            <analog analog_id="3">Спазмалгон</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
                 <package>
                     <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <medicine_count>20</medicine_count>
+                    <price currency="BYN">6</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -78,13 +74,13 @@
     </medicine>
 
     <medicine id="4">
-        <name>Аспирин</name>
+        <name>Дротаверин</name>
         <pharm>Шаражка</pharm>
         <group>Болеутоляющее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Спазмалгон</analog>
+            <analog analog_id="2">Спазматон</analog>
+            <analog analog_id="3">Ношпа</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
@@ -103,13 +99,13 @@
     </medicine>
 
     <medicine id="5">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
+        <name>Спазматон</name>
+        <pharm>Спазмалек</pharm>
         <group>Болеутоляющее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Спазмалгон</analog>
+            <analog analog_id="2">Ношпа</analog>
+            <analog analog_id="3">Дротаверин</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
@@ -127,14 +123,14 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
+    <medicine id="6">
+        <name>Спазмалгон</name>
+        <pharm>Алерт</pharm>
         <group>Болеутоляющее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Спазматон</analog>
+            <analog analog_id="2">Ношпа</analog>
+            <analog analog_id="3">Дротаверин</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
@@ -152,21 +148,104 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+    <medicine id="7">
+        <name>Святая вода</name>
+        <pharm>Божечки</pharm>
+        <group>Комплексное</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Благословение божье</analog>
+        </analogs>
+        <versions>
+            <version type="Вода">
+                <package>
+                    <package_type>Святой грааль</package_type>
+                    <medicine_count>1</medicine_count>
+                    <price currency="BYN">0</price>
+                </package>
+                <dosage>
+                    <measuring>1 стакан</measuring>
+                    <frequency>натощак</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="8">
+        <name>Фликсоназе</name>
+        <pharm>ГСК Фарма</pharm>
+        <group>Глюкокортикостероиды</group>
+        <analogs>
+            <analog analog_id="1">Назофан</analog>
+            <analog analog_id="2">Селефлу</analog>
+            <analog analog_id="3">Фликсотид</analog>
+        </analogs>
+        <versions>
+            <version type="Спрей">
+                <package>
+                    <package_type>Аэрозоль</package_type>
+                    <medicine_count>50 мкг</medicine_count>
+                    <price currency="BYN">25</price>
+                </package>
+                <dosage>
+                    <measuring>1 доза</measuring>
+                    <frequency>1 раз в день</frequency>
+                </dosage>
+                <pharmacy_sale>По рецепту</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="9">
+        <name>Гепарин</name>
+        <pharm>Фармтехнология</pharm>
+        <group>Антикоагулянты</group>
+        <analogs>
+            <analog analog_id="1">Гепариновая мазь</analog>
+            <analog analog_id="2">Лиотон</analog>
+            <analog analog_id="3">Тромблесс</analog>
+        </analogs>
+        <versions>
+            <version type="Гель">
+                <package>
+                    <package_type>Тюбик</package_type>
+                    <medicine_count>30 г</medicine_count>
+                    <price currency="BYN">3</price>
+                </package>
+                <dosage>
+                    <measuring>Нанести тонким слоем на синяк</measuring>
+                    <frequency>3-4 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Гель">
+                <package>
+                    <package_type>Тюбик</package_type>
+                    <medicine_count>60 г</medicine_count>
+                    <price currency="BYN">5</price>
+                </package>
+                <dosage>
+                    <measuring>Нанести тонким слоем на синяк</measuring>
+                    <frequency>3-4 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="10">
+        <name>Мезим</name>
+        <pharm>Запад</pharm>
+        <group>Ферменты</group>
+        <analogs>
+            <analog analog_id="1">Фестал</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
                 <package>
                     <package_type>Блистер</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">6</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -177,21 +256,31 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+    <medicine id="11">
+        <name>Фестал</name>
+        <pharm>Отчизна</pharm>
+        <group>Ферменты</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Мезим</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
                 <package>
                     <package_type>Блистер</package_type>
+                    <medicine_count>20</medicine_count>
+                    <price currency="BYN">4</price>
+                </package>
+                <dosage>
+                    <measuring>1</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Таблетки">
+                <package>
+                    <package_type>Блистер</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">2.3</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -202,21 +291,127 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
+    <medicine id="12">
+        <name>Синупрет</name>
         <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+        <group>Секретолитики</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Доктор МОМ</analog>
+            <analog analog_id="2">Доктор МОМ Колд</analog>
         </analogs>
         <versions>
-            <version type="Таблетки">
+            <version type="Драже">
                 <package>
                     <package_type>Блистер</package_type>
+                    <medicine_count>50</medicine_count>
+                    <price currency="BYN">14</price>
+                </package>
+                <dosage>
+                    <measuring>2</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Капли">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>100 мл</medicine_count>
+                    <price currency="BYN">11</price>
+                </package>
+                <dosage>
+                    <measuring>10 капель</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Сироп">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>100 мл</medicine_count>
+                    <price currency="BYN">12</price>
+                </package>
+                <dosage>
+                    <measuring>1 чайная ложка</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="13">
+        <name>Доктор МОМ</name>
+        <pharm>Шар</pharm>
+        <group>Секретолитики</group>
+        <analogs>
+            <analog analog_id="1">Доктор Тайсс</analog>
+            <analog analog_id="2">Анзибел</analog>
+        </analogs>
+        <versions>
+            <version type="Сироп">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>100 мл</medicine_count>
+                    <price currency="BYN">5</price>
+                </package>
+                <dosage>
+                    <measuring>1 чайная ложка</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Пастилки">
+                <package>
+                    <package_type>Блистер</package_type>
+                    <medicine_count>20</medicine_count>
+                    <price currency="BYN">3.5</price>
+                </package>
+                <dosage>
+                    <measuring>1</measuring>
+                    <frequency>3-4 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="14">
+        <name>Йод</name>
+        <pharm>БелЙод</pharm>
+        <group>Антисептик, дезинфицирующее средство</group>
+        <analogs>
+            <analog analog_id="1">Зелёнка</analog>
+            <analog analog_id="1">Йодин</analog>
+        </analogs>
+        <versions>
+            <version type="Раствор">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>10 мл</medicine_count>
+                    <price currency="BYN">1</price>
+                </package>
+                <dosage>
+                    <measuring>Нанести вокруг раны</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="15">
+        <name>Гриппомикс</name>
+        <pharm>Шаражка</pharm>
+        <group>Жаропонижающее</group>
+        <analogs>
+            <analog analog_id="1">Орвиколд</analog>
+        </analogs>
+        <versions>
+            <version type="Порошок">
+                <package>
+                    <package_type>Пакетики</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">8</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -227,21 +422,20 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+    <medicine id="16">
+        <name>Орвиколд</name>
+        <pharm>ЛекФарм</pharm>
+        <group>Жаропонижающее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Гриппомикс</analog>
+            <analog analog_id="2">Ангриколд</analog>
         </analogs>
         <versions>
-            <version type="Таблетки">
+            <version type="Порошок">
                 <package>
-                    <package_type>Блистер</package_type>
+                    <package_type>Пакетики</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">6</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -252,12 +446,12 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+    <medicine id="17">
+        <name>Антигриппин</name>
+        <pharm>Натур Продукт</pharm>
+        <group>Жаропонижающее</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
+            <analog analog_id="1">Ангриколд</analog>
             <analog analog_id="2">Труселя</analog>
             <analog analog_id="3">Те самые</analog>
         </analogs>
@@ -265,8 +459,20 @@
             <version type="Таблетки">
                 <package>
                     <package_type>Блистер</package_type>
+                    <medicine_count>30</medicine_count>
+                    <price currency="BYN">15</price>
+                </package>
+                <dosage>
+                    <measuring>1</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Порошок">
+                <package>
+                    <package_type>Пакетики</package_type>
                     <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <price currency="BYN">9</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
@@ -277,227 +483,26 @@
         </versions>
     </medicine>
 
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
+    <medicine id="18">
+        <name>Антихитрин</name>
+        <pharm>Заповеди</pharm>
+        <group>Противохитростные</group>
         <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
+            <analog analog_id="1">Противохитрин</analog>
+            <analog analog_id="2">Хитронет</analog>
         </analogs>
         <versions>
             <version type="Таблетки">
                 <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
+                    <package_type>Таблетка</package_type>
+                    <medicine_count>1</medicine_count>
+                    <price currency="BYN">1000</price>
                 </package>
                 <dosage>
                     <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
+                    <frequency>1 раза в жизни</frequency>
                 </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
-            </version>
-        </versions>
-    </medicine>
-
-    <medicine id="1">
-        <name>Аспирин</name>
-        <pharm>Шаражка</pharm>
-        <group>Болеутоляющее</group>
-        <analogs>
-            <analog analog_id="1">Анальгин</analog>
-            <analog analog_id="2">Труселя</analog>
-            <analog analog_id="3">Те самые</analog>
-        </analogs>
-        <versions>
-            <version type="Таблетки">
-                <package>
-                    <package_type>Блистер</package_type>
-                    <medicine_count>10</medicine_count>
-                    <price currency="BYN">2</price>
-                </package>
-                <dosage>
-                    <measuring>1</measuring>
-                    <frequency>3 раза в день</frequency>
-                </dosage>
-                <pharmacy_sale>Без рецепта</pharmacy_sale>
+                <pharmacy_sale>По рецепту врача</pharmacy_sale>
             </version>
         </versions>
     </medicine>
