@@ -85,9 +85,9 @@ public class DOMParser implements DAO {
 	private List<MedicineType> createMedicineTypes(NodeList versionNodes) {
 		List<MedicineType> versions = new ArrayList<>();
 		for (int versionCounter = 0; versionCounter < versionNodes.getLength(); versionCounter++) {
-			MedicineType medicineType = new MedicineType();
 			NodeList versionNode = versionNodes.item(versionCounter).getChildNodes();
 			for (int versionField = 0; versionField < versionNode.getLength(); versionField++){
+				MedicineType medicineType = new MedicineType();
 				Node medicineUseCase = versionNode.item(versionField);
 
 				boolean elementNode = medicineUseCase.getNodeType() == Node.ELEMENT_NODE;

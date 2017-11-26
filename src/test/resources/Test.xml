@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<medicines xmlns="http://www.epam.com"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:schemaLocation="">
+    <medicine id="1">
+        <name>Аспирин</name>
+        <pharm>Фирма 1</pharm>
+        <group>Болеутоляющее</group>
+        <analogs>
+            <analog analog_id="1">Анальгин</analog>
+        </analogs>
+        <versions>
+            <version type="Таблетки">
+                <package>
+                    <package_type>Блистер</package_type>
+                    <medicine_count>10</medicine_count>
+                    <price currency="BYN">2</price>
+                </package>
+                <dosage>
+                    <measuring>1 таблетка</measuring>
+                    <frequency>2 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="2">
+        <name>Синупрет</name>
+        <pharm>Шаражка</pharm>
+        <group>Секретолитики</group>
+        <analogs>
+            <analog analog_id="1">Доктор МОМ</analog>
+            <analog analog_id="2">Доктор МОМ Колд</analog>
+        </analogs>
+        <versions>
+            <version type="Драже">
+                <package>
+                    <package_type>Блистер</package_type>
+                    <medicine_count>50</medicine_count>
+                    <price currency="BYN">14</price>
+                </package>
+                <dosage>
+                    <measuring>2</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Капли">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>100 мл</medicine_count>
+                    <price currency="BYN">11</price>
+                </package>
+                <dosage>
+                    <measuring>10 капель</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+            <version type="Сироп">
+                <package>
+                    <package_type>Флакон</package_type>
+                    <medicine_count>100 мл</medicine_count>
+                    <price currency="BYN">12</price>
+                </package>
+                <dosage>
+                    <measuring>1 чайная ложка</measuring>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+                <pharmacy_sale>Без рецепта</pharmacy_sale>
+            </version>
+        </versions>
+    </medicine>
+</medicines>
