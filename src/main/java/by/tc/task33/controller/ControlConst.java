@@ -18,4 +18,5 @@ class ControlConst {
     static final String LAST_ATTRIBUTE = "last";
     static final String SIZE_ATTRIBUTE = "size";
     static final String PAGE_ATTRIBUTE = "page";
+	public static final String LOG4J_XML = "log4j.properties";
 }

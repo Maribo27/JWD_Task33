@@ -7,6 +7,10 @@
   <servlet>
     <servlet-name>Controller</servlet-name>
     <servlet-class>by.tc.task33.controller.Controller</servlet-class>
+    <init-param>
+      <param-name>log4j-properties-location</param-name>
+      <param-value>WEB-INF/log4j.properties</param-value>
+    </init-param>
   </servlet>
 
   <servlet-mapping>

@@ -8,6 +8,7 @@ import by.tc.task33.entity.Dosage;
 import by.tc.task33.entity.Medicine;
 import by.tc.task33.entity.MedicineType;
 import by.tc.task33.entity.Price;
+import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -19,8 +20,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DOMParser implements DAO {
 	private List<Medicine> medicines;
+	private Logger logger;
 
 	public List<Medicine> getMedicines() {
 		return medicines;
@@ -28,7 +31,10 @@ public class DOMParser implements DAO {
 
 	public void parseFile(String filePath) throws DAOException {
 
+		logger = Logger.getLogger(this.getClass());
+
 		try {
+			logger.info(DAOMessages.START_PARSING_MESSAGE);
 			File inputFile = new File(filePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -39,21 +45,26 @@ public class DOMParser implements DAO {
 
 			medicines = createMedicineList(medicinesNodeList);
 		} catch (ParserConfigurationException e) {
+			logger.error(DAOMessages.CONFIGURE_PARSER_MESSAGE);
 			throw new DAOException(DAOMessages.CONFIGURE_PARSER_MESSAGE);
 		} catch (SAXException e) {
+			logger.error(DAOMessages.PARSER_EXCEPTION_MESSAGE);
 			throw new DAOException(DAOMessages.PARSER_EXCEPTION_MESSAGE);
 		} catch (IOException e) {
+			logger.error(DAOMessages.FILE_NOT_FOUND_MESSAGE);
 			throw new DAOException(DAOMessages.FILE_NOT_FOUND_MESSAGE);
 		}
 	}
 
 	private List<Medicine> createMedicineList(NodeList medicinesNodeList) {
+		logger.info(DAOMessages.CREATING_MEDICINE_LIST);
 		List<Medicine> medicines = new ArrayList<>();
 		for (int medicineIndex = 0; medicineIndex < medicinesNodeList.getLength(); medicineIndex++) {
 			Medicine medicine = new Medicine();
 			Node medicineNode = medicinesNodeList.item(medicineIndex);
 
 			if (medicineNode.getNodeType() == Node.ELEMENT_NODE) {
+				logger.info(DAOMessages.PARSE_ELEMENT);
 				Element element = (Element) medicineNode;
 
 				String id = element.getAttribute(XMLConst.ID);
@@ -83,6 +94,7 @@ public class DOMParser implements DAO {
 	}
 
 	private List<MedicineType> createMedicineTypes(NodeList versionNodes) {
+		logger.info(DAOMessages.CREATE_MEDICINE_TYPE);
 		List<MedicineType> versions = new ArrayList<>();
 		for (int versionCounter = 0; versionCounter < versionNodes.getLength(); versionCounter++) {
 			NodeList versionNode = versionNodes.item(versionCounter).getChildNodes();
@@ -92,6 +104,7 @@ public class DOMParser implements DAO {
 
 				boolean elementNode = medicineUseCase.getNodeType() == Node.ELEMENT_NODE;
 				if (elementNode) {
+					logger.info(DAOMessages.PARSE_ELEMENT);
 					Element element = (Element) medicineUseCase;
 
 					String type = element.getAttribute(XMLConst.TYPE);
@@ -113,11 +126,13 @@ public class DOMParser implements DAO {
 	}
 
 	private void createDosage(MedicineType medicineType, NodeList dosages) {
+		logger.info(DAOMessages.CREATE_DOSAGE);
 		for (int dosageFieldCounter = 0; dosageFieldCounter < dosages.getLength(); dosageFieldCounter++){
 			Node dosageNode = dosages.item(dosageFieldCounter);
 
 			boolean elementNode = dosageNode.getNodeType() == Node.ELEMENT_NODE;
 			if (elementNode) {
+				logger.info(DAOMessages.PARSE_ELEMENT);
 				Dosage dosage = new Dosage();
 				Element element = (Element) dosageNode;
 
@@ -132,9 +147,11 @@ public class DOMParser implements DAO {
 	}
 
 	private void createPackage(MedicineType medicineType, NodeList aPackage) {
+		logger.info(DAOMessages.CREATE_PACKAGE);
 		for (int packageField = 0; packageField < aPackage.getLength(); packageField++){
 			Node packageNode = aPackage.item(packageField);
 			if (packageNode.getNodeType() == Node.ELEMENT_NODE) {
+				logger.info(DAOMessages.PARSE_ELEMENT);
 				Element element = (Element) packageNode;
 
 				String packageType = element.getElementsByTagName(XMLConst.PACKAGE_TYPE).item(0).getTextContent();
@@ -150,6 +167,7 @@ public class DOMParser implements DAO {
 	}
 
 	private Price createPrice(Element element) {
+		logger.info(DAOMessages.CREATE_PRICE);
 		String priceValue = element.getElementsByTagName(XMLConst.PRICE).item(0).getTextContent();
 
 		NamedNodeMap attributes = element.getElementsByTagName(XMLConst.PRICE).item(0).getAttributes();
@@ -164,9 +182,11 @@ public class DOMParser implements DAO {
 	}
 
 	private List<String> createAnalogs(NodeList analogNodes) {
+		logger.info(DAOMessages.CREATE_ANALOGS);
 		List<String> analogs = new ArrayList<>();
 
 		for (int analogCounter = 0; analogCounter < analogNodes.getLength(); analogCounter++) {
+			logger.info(DAOMessages.PARSE_ELEMENT);
 			Node analogNode = analogNodes.item(analogCounter);
 
 			boolean elementNode = analogNode.getNodeType() == Node.ELEMENT_NODE;

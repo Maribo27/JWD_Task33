@@ -8,6 +8,7 @@ import by.tc.task33.entity.Dosage;
 import by.tc.task33.entity.Medicine;
 import by.tc.task33.entity.MedicineType;
 import by.tc.task33.entity.Price;
+import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -34,6 +35,7 @@ public class StAXParser implements DAO {
 	private List<String> analogs;
 	private List<MedicineType> versions;
 	private List<Medicine> medicines;
+	private Logger logger;
 
 	private boolean elementStarted;
 
@@ -42,13 +44,17 @@ public class StAXParser implements DAO {
 	}
 
 	public void parseFile(String filePath) throws DAOException {
+		logger = Logger.getLogger(this.getClass());
 		try {
 			XMLInputFactory factory = XMLInputFactory.newInstance();
 			XMLEventReader eventReader = factory.createXMLEventReader(new FileInputStream(filePath), ENCODING);
+			logger.info(DAOMessages.START_PARSING_MESSAGE);
 			parseElements(eventReader);
 		} catch (FileNotFoundException e) {
+			logger.info(DAOMessages.FILE_NOT_FOUND_MESSAGE);
 			throw new DAOException(DAOMessages.FILE_NOT_FOUND_MESSAGE);
 		} catch (XMLStreamException e) {
+			logger.info(DAOMessages.PARSER_EXCEPTION_MESSAGE);
 			throw new DAOException(DAOMessages.PARSER_EXCEPTION_MESSAGE);
 		}
 	}
@@ -74,9 +80,9 @@ public class StAXParser implements DAO {
 	}
 
 	private void parseCharacter(XMLEvent event) {
+		logger.info(DAOMessages.PARSE_ELEMENT_CONTENT + currentElement);
 		Characters characters = event.asCharacters();
 		String element = characters.getData();
-
 		switch(currentElement) {
 			case XMLConst.NAME:
 				medicine.setName(element);
@@ -115,6 +121,7 @@ public class StAXParser implements DAO {
 	}
 
 	private void startElement(XMLEvent event) {
+		logger.info(DAOMessages.PARSE_ELEMENT);
 		StartElement startElement = event.asStartElement();
 		Iterator<Attribute> attributes;
 		String attribute;
@@ -122,9 +129,11 @@ public class StAXParser implements DAO {
 
 		switch(currentElement) {
 			case XMLConst.MEDICINES:
+				logger.info(DAOMessages.CREATING_MEDICINE_LIST);
 				medicines = new ArrayList<>();
 				break;
 			case XMLConst.MEDICINE:
+				logger.info(DAOMessages.CREATE_MEDICINE);
 				medicine = new Medicine();
 				attributes = startElement.getAttributes();
 				attribute = attributes.next().getValue();
@@ -132,14 +141,17 @@ public class StAXParser implements DAO {
 				medicines.add(medicine);
 				break;
 			case XMLConst.ANALOGS:
+				logger.info(DAOMessages.CREATE_ANALOGS);
 				analogs = new ArrayList<>();
 				medicine.setAnalogs(analogs);
 				break;
 			case XMLConst.VERSIONS:
+				logger.info(DAOMessages.CREATE_MEDICINE_TYPE);
 				versions = new ArrayList<>();
 				medicine.setVersions(versions);
 				break;
 			case XMLConst.VERSION:
+				logger.info(DAOMessages.CREATE_VERSION);
 				medicineType = new MedicineType();
 				attributes = startElement.getAttributes();
 				attribute = attributes.next().getValue();
@@ -147,6 +159,7 @@ public class StAXParser implements DAO {
 				versions.add(medicineType);
 				break;
 			case XMLConst.PRICE:
+				logger.info(DAOMessages.CREATE_PRICE);
 				price = new Price();
 				attributes = startElement.getAttributes();
 				attribute = attributes.next().getValue();
@@ -154,6 +167,7 @@ public class StAXParser implements DAO {
 				medicineType.setPrice(price);
 				break;
 			case XMLConst.DOSAGE:
+				logger.info(DAOMessages.CREATE_DOSAGE);
 				dosage = new Dosage();
 				medicineType.setDosage(dosage);
 				break;
