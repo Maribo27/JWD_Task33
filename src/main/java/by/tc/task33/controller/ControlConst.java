@@ -1,22 +1,15 @@
 package by.tc.task33.controller;
 
 class ControlConst {
-    static final String ERROR_ATTRIBUTE = "error";
-    static final String MEDICINE_ATTRIBUTE = "medicine";
-    static final String BEGIN_ATTRIBUTE = "begin";
-    static final String END_ATTRIBUTE = "end";
+    static final String ERROR = "error";
+    static final String MEDICINE = "medicine";
     static final String COMMAND = "command";
     static final String FILE_NAME = "Medicines.xml";
     static final String OPEN_SQUARE = "%5B";
     static final String CLOSE_SQUARE = "%5D";
     static final String OPEN = "[";
     static final String CLOSE = "]";
-	static final String PARSER_ATTRIBUTE = "parser";
-    static final String FIRST_ATTRIBUTE = "first";
-    static final String PREV_ATTRIBUTE = "prev";
-    static final String NEXT_ATTRIBUTE = "next";
-    static final String LAST_ATTRIBUTE = "last";
-    static final String SIZE_ATTRIBUTE = "size";
-    static final String PAGE_ATTRIBUTE = "page";
-	public static final String LOG4J_XML = "log4j.properties";
+    static final String CURRENT_PAGE = "current";
+    static final String PAGE = "page";
+	static final String LOG4J_XML = "log4j-properties-location";
 }

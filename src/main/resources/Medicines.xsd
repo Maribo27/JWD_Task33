@@ -3,70 +3,100 @@
   <xs:element name="medicines">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="medicine" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element type="xs:string" name="name"/>
-              <xs:element type="xs:string" name="pharm"/>
-              <xs:element type="xs:string" name="group"/>
-              <xs:element name="analogs">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="analog" maxOccurs="unbounded" minOccurs="0">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="analog_id"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="versions">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="version" maxOccurs="unbounded" minOccurs="0">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="package">
-                            <xs:complexType>
-                              <xs:sequence>
-                                <xs:element type="xs:string" name="package_type"/>
-                                <xs:element type="xs:string" name="medicine_count"/>
-                                <xs:element name="price">
-                                  <xs:complexType>
-                                    <xs:simpleContent>
-                                      <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="currency" use="required"/>
-                                      </xs:extension>
-                                    </xs:simpleContent>
-                                  </xs:complexType>
-                                </xs:element>
-                              </xs:sequence>
-                            </xs:complexType>
-                          </xs:element>
-                          <xs:element name="dosage">
-                            <xs:complexType>
-                              <xs:sequence>
-                                <xs:element type="xs:string" name="measuring"/>
-                                <xs:element type="xs:string" name="frequency"/>
-                              </xs:sequence>
-                            </xs:complexType>
-                          </xs:element>
-                          <xs:element type="xs:string" name="pharmacy_sale"/>
-                        </xs:sequence>
-                        <xs:attribute type="xs:string" name="type" use="required"/>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-            <xs:attribute type="xs:string" name="id"/>
-          </xs:complexType>
+        <xs:element name="medicine" maxOccurs="unbounded" minOccurs="0" type="normal">
+
         </xs:element>
+
+        <xs:complexType name="unnormal">
+          <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="pharm"/>
+
+          </xs:sequence>
+          <xs:attribute type="xs:string" name="id"/>
+        </xs:complexType>
+
+        <xs:complexType name="normal">
+          <xs:complexContent>
+            <xs:extension base="xs:unnormal">
+          <xs:sequence>
+            <xs:element type="xs:string" name="group">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="[A-Za-zА-Яа-я ,]*"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="analogs">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="analog" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                          <xs:attribute type="xs:string" name="analog_id" use="required"/>
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="versions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="version" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="package">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element type="xs:string" name="package_type"/>
+                              <xs:element type="xs:string" name="medicine_count"/>
+                              <xs:element name="price">
+                                <xs:complexType>
+                                  <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                      <xs:attribute type="xs:string" name="currency" use="optional" default="BYN"/>
+                                    </xs:extension>
+                                  </xs:simpleContent>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="dosage">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element type="xs:string" name="measuring"/>
+                              <xs:element type="xs:string" name="frequency"/>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="pharmacy_sale">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="Без рецепта"/>
+                              <xs:enumeration value="По рецепту"/>
+                              <xs:enumeration value="На всё воля Божья"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attribute type="xs:string" name="type" use="required"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+          <xs:attribute type="xs:string" name="id"/>
+        </xs:complexType>
+
+
+
       </xs:sequence>
     </xs:complexType>
   </xs:element>

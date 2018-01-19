@@ -15,7 +15,7 @@ public class SAXParsing implements Command {
     private ServiceFactory factory = ServiceFactory.getInstance();
 
     @Override
-    public List<Medicine> execute(String filePath) throws ServletException, IOException, ServiceException {
+    public List<Medicine> execute(String filePath) throws ServiceException {
         Service service = factory.getSAXService();
 
         List<Medicine> medicines;

@@ -502,7 +502,7 @@
                     <measuring>1</measuring>
                     <frequency>1 раза в жизни</frequency>
                 </dosage>
-                <pharmacy_sale>По рецепту врача</pharmacy_sale>
+                <pharmacy_sale>По рецепту</pharmacy_sale>
             </version>
         </versions>
     </medicine>
