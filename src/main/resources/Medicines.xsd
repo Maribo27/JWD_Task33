@@ -1,103 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" targetNamespace="http://www.epam.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="medicines">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="medicine" maxOccurs="unbounded" minOccurs="0" type="normal">
+  <xs:element name="medicines" type="epam:medicinesType" xmlns:epam="http://www.epam.com"/>
+  <xs:complexType name="medicinesType">
+    <xs:sequence>
+      <xs:element type="epam:fullMedInfo" name="medicine" maxOccurs="unbounded" minOccurs="0" xmlns:epam="http://www.epam.com"/>
+    </xs:sequence>
+  </xs:complexType>
 
-        </xs:element>
+  <xs:complexType name="medInfo">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="pharm"/>
+      <xs:element name="group">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[\wА-Яа-я]+(-[\wА-Яа-я]+)?( [\wА-Яа-я]+(-[\wА-Яа-я]+)?)?(, [\wА-Яа-я]+(-[\wА-Яа-я]+)?( [\wА-Яа-я]+(-[\wА-Яа-я]+)?)?)?"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:ID" name="id" use="required"/>
+  </xs:complexType>
 
-        <xs:complexType name="unnormal">
-          <xs:sequence>
-            <xs:element type="xs:string" name="name"/>
-            <xs:element type="xs:string" name="pharm"/>
+  <xs:complexType name="fullMedInfo">
+    <xs:complexContent>
+      <xs:extension base="epam:medInfo" xmlns:epam="http://www.epam.com">
+        <xs:sequence>
+          <xs:element type="epam:analogsType" name="analogs" xmlns:epam="http://www.epam.com"/>
+          <xs:element type="epam:versionsType" name="versions" xmlns:epam="http://www.epam.com"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-          </xs:sequence>
-          <xs:attribute type="xs:string" name="id"/>
-        </xs:complexType>
+  <xs:complexType name="versionsType">
+    <xs:sequence>
+      <xs:element type="epam:versionType" name="version" maxOccurs="unbounded" minOccurs="0" xmlns:epam="http://www.epam.com"/>
+    </xs:sequence>
+  </xs:complexType>
 
-        <xs:complexType name="normal">
-          <xs:complexContent>
-            <xs:extension base="xs:unnormal">
-          <xs:sequence>
-            <xs:element type="xs:string" name="group">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:pattern value="[A-Za-zА-Яа-я ,]*"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:element>
-            <xs:element name="analogs">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="analog" maxOccurs="unbounded" minOccurs="0">
-                    <xs:complexType>
-                      <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                          <xs:attribute type="xs:string" name="analog_id" use="required"/>
-                        </xs:extension>
-                      </xs:simpleContent>
-                    </xs:complexType>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="versions">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="version" maxOccurs="unbounded" minOccurs="0">
-                    <xs:complexType>
-                      <xs:sequence>
-                        <xs:element name="package">
-                          <xs:complexType>
-                            <xs:sequence>
-                              <xs:element type="xs:string" name="package_type"/>
-                              <xs:element type="xs:string" name="medicine_count"/>
-                              <xs:element name="price">
-                                <xs:complexType>
-                                  <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                      <xs:attribute type="xs:string" name="currency" use="optional" default="BYN"/>
-                                    </xs:extension>
-                                  </xs:simpleContent>
-                                </xs:complexType>
-                              </xs:element>
-                            </xs:sequence>
-                          </xs:complexType>
-                        </xs:element>
-                        <xs:element name="dosage">
-                          <xs:complexType>
-                            <xs:sequence>
-                              <xs:element type="xs:string" name="measuring"/>
-                              <xs:element type="xs:string" name="frequency"/>
-                            </xs:sequence>
-                          </xs:complexType>
-                        </xs:element>
-                        <xs:element name="pharmacy_sale">
-                          <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                              <xs:enumeration value="Без рецепта"/>
-                              <xs:enumeration value="По рецепту"/>
-                              <xs:enumeration value="На всё воля Божья"/>
-                            </xs:restriction>
-                          </xs:simpleType>
-                        </xs:element>
-                      </xs:sequence>
-                      <xs:attribute type="xs:string" name="type" use="required"/>
-                    </xs:complexType>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-            </xs:extension>
-          </xs:complexContent>
-          <xs:attribute type="xs:string" name="id"/>
-        </xs:complexType>
+  <xs:complexType name="versionType">
+    <xs:sequence>
+      <xs:element type="epam:packageType" name="package" xmlns:epam="http://www.epam.com"/>
+      <xs:element type="epam:dosageType" name="dosage" xmlns:epam="http://www.epam.com"/>
+      <xs:element name="pharmacy_sale">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Без рецепта"/>
+            <xs:enumeration value="На всё воля Божья"/>
+            <xs:enumeration value="По рецепту"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="type" use="required"/>
+  </xs:complexType>
 
+  <xs:complexType name="analogsType">
+    <xs:sequence>
+      <xs:element type="epam:analogType" name="analog" maxOccurs="3" minOccurs="0" xmlns:epam="http://www.epam.com"/>
+    </xs:sequence>
+  </xs:complexType>
 
+  <xs:complexType name="analogType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="analog_id" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  <xs:complexType name="packageType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="package_type"/>
+      <xs:element type="xs:string" name="medicine_count"/>
+      <xs:element type="epam:currencyType" name="price" xmlns:epam="http://www.epam.com"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="priceRestriction">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="currencyType">
+    <xs:simpleContent>
+      <xs:extension base="epam:priceRestriction" xmlns:epam="http://www.epam.com">
+        <xs:attribute type="xs:string" name="currency" use="optional" default="BYN"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="medicineType">
+    <xs:sequence>
+
+      <xs:element type="epam:analogsType" name="analogs" xmlns:epam="http://www.epam.com"/>
+      <xs:element type="epam:versionsType" name="versions" xmlns:epam="http://www.epam.com"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="dosageType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="measuring"/>
+      <xs:element type="xs:string" name="frequency"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>

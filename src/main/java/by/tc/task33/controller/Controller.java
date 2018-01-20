@@ -1,6 +1,7 @@
 package by.tc.task33.controller;
 
-import by.tc.task33.controller.command.Command;
+import by.tc.task33.controller.parser.Director;
+import by.tc.task33.controller.parser.Parser;
 import by.tc.task33.entity.Medicine;
 import by.tc.task33.entity.Page;
 import by.tc.task33.service.ServiceException;
@@ -32,7 +33,7 @@ public class Controller extends HttpServlet {
 	private static final String ERROR_OCCURRED_FORWARD_TO_ERROR_PAGE = "error occurred, forward to error page";
 	private static final String COMMAND_EXECUTED = "command executed";
 	private static final int ROWS_ON_PAGE = 4;
-    private final CommandDirector director = new CommandDirector();
+    private final Director director = new Director();
     private static final long serialVersionUID = 1L;
 
 	private static Logger log = Logger.getLogger(Controller.class);
@@ -86,13 +87,14 @@ public class Controller extends HttpServlet {
 		List<Medicine> medicines = null;
 		RequestDispatcher requestDispatcher;
 		String parserType = request.getParameter(COMMAND).toUpperCase();
-		Command command = director.getCommand(parserType);
+		Parser parser = director.getParser(parserType);
 		try {
 			String filePath = getFilePath();
 			if (filePath == null) {
 				log.error(FILE_NOT_FOUND_MESSAGE);
 			} else {
-				medicines = command.execute(filePath);
+				parser.parse(filePath);
+				medicines = parser.getMedicines();
 				session.setAttribute(MEDICINE, medicines);
 				log.info(COMMAND_EXECUTED);
 			}

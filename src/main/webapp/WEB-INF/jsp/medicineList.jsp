@@ -32,13 +32,18 @@
                     </c:forEach>
                 </td>
                 <td>
+                    <c:set var = "last" scope = "request" value = "${med.versions.size() - 1}"/>
                     <c:forEach items="${med.versions}" var="version">
-                        <br><c:out value="${version.type}"/><br>
+                        <c:out value="${version.type}"/><br>
                         Упаковка: <c:out value="${version.packageType}"/><br>
                         Количество: <c:out value="${version.count}"/><br>
                         Цена: <c:out value="${version.price}"/><br>
                         Дозировка: <c:out value="${version.dosage}"/><br>
                         Отпуск из аптеки: <c:out value="${version.pharmacySale}"/><br>
+                        <c:if test = "${last > 0}">
+                            <br>
+                            <c:set var = "last" scope = "request" value = "${last - 1}"/>
+                        </c:if>
                     </c:forEach>
                 </td>
             </tr>

@@ -3,6 +3,7 @@ package by.tc.task33.entity;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class Medicine implements Serializable {
     private String name;
@@ -65,27 +66,20 @@ public class Medicine implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Medicine medicine = (Medicine) o;
-
-        if (name != null ? !name.equals(medicine.name) : medicine.name != null) return false;
-        if (pharm != null ? !pharm.equals(medicine.pharm) : medicine.pharm != null) return false;
-        if (group != null ? !group.equals(medicine.group) : medicine.group != null) return false;
-        if (analogs != null ? !analogs.equals(medicine.analogs) : medicine.analogs != null) return false;
-        return versions != null ? versions.equals(medicine.versions) : medicine.versions == null;
+        return id == medicine.id &&
+                Objects.equals(name, medicine.name) &&
+                Objects.equals(pharm, medicine.pharm) &&
+                Objects.equals(group, medicine.group) &&
+                Objects.equals(analogs, medicine.analogs) &&
+                Objects.equals(versions, medicine.versions);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (pharm != null ? pharm.hashCode() : 0);
-        result = 31 * result + (group != null ? group.hashCode() : 0);
-        result = 31 * result + (analogs != null ? analogs.hashCode() : 0);
-        result = 31 * result + (versions != null ? versions.hashCode() : 0);
-        return result;
+        return Objects.hash(name, pharm, group, id, analogs, versions);
     }
 
     @Override

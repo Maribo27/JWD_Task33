@@ -1,6 +1,7 @@
 package by.tc.task33.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class MedicineType implements Serializable {
     private String type;
@@ -65,26 +66,18 @@ public class MedicineType implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         MedicineType that = (MedicineType) o;
-
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (packageType != null ? !packageType.equals(that.packageType) : that.packageType != null) return false;
-        if (count != null ? !count.equals(that.count) : that.count != null) return false;
-        if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (dosage != null ? !dosage.equals(that.dosage) : that.dosage != null) return false;
-        return pharmacySale != null ? pharmacySale.equals(that.pharmacySale) : that.pharmacySale == null;
+        return Objects.equals(type, that.type) &&
+                Objects.equals(packageType, that.packageType) &&
+                Objects.equals(count, that.count) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(dosage, that.dosage) &&
+                Objects.equals(pharmacySale, that.pharmacySale);
     }
 
     @Override
     public int hashCode() {
-        int result = type != null ? type.hashCode() : 0;
-        result = 31 * result + (packageType != null ? packageType.hashCode() : 0);
-        result = 31 * result + (count != null ? count.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (dosage != null ? dosage.hashCode() : 0);
-        result = 31 * result + (pharmacySale != null ? pharmacySale.hashCode() : 0);
-        return result;
+        return Objects.hash(type, packageType, count, price, dosage, pharmacySale);
     }
 
     @Override

@@ -37,8 +37,7 @@ public class SAXFileHandler extends DefaultHandler{
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes)
-            throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         logger.info(DAOMessages.PARSE_ELEMENT);
         currentElement = qName;
 
@@ -50,7 +49,7 @@ public class SAXFileHandler extends DefaultHandler{
             case XMLConst.MEDICINE:
                 logger.info(DAOMessages.CREATE_MEDICINE);
                 medicine = new Medicine();
-                String id = attributes.getValue(XMLConst.ID);
+                String id = attributes.getValue(XMLConst.ID).replace("ID-","");
                 medicine.setId(Integer.parseInt(id));
                 medicines.add(medicine);
                 break;
@@ -73,7 +72,10 @@ public class SAXFileHandler extends DefaultHandler{
             case XMLConst.PRICE:
                 logger.info(DAOMessages.CREATE_PRICE);
                 price = new Price();
-                price.setCurrency(attributes.getValue(XMLConst.CURRENCY));
+                String currency = attributes.getValue(XMLConst.CURRENCY);
+                if (currency != null) {
+                    price.setCurrency(currency);
+                }
                 medicineType.setPrice(price);
                 break;
             case XMLConst.DOSAGE:
@@ -85,7 +87,7 @@ public class SAXFileHandler extends DefaultHandler{
     }
 
     @Override
-    public void characters(char ch[], int start, int length) throws SAXException {
+    public void characters(char ch[], int start, int length) {
         logger.info(DAOMessages.PARSE_ELEMENT_CONTENT + currentElement);
         String elementValue = new String(ch, start, length);
         switch (currentElement.toLowerCase()){
@@ -123,7 +125,7 @@ public class SAXFileHandler extends DefaultHandler{
     }
     
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         logger.info(DAOMessages.END_OF_ELEMENT);
         currentElement = EMPTY_STRING;
     }

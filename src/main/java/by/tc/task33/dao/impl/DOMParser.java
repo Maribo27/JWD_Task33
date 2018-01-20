@@ -67,7 +67,7 @@ public class DOMParser implements DAO {
 				logger.info(DAOMessages.PARSE_ELEMENT);
 				Element element = (Element) medicineNode;
 
-				String id = element.getAttribute(XMLConst.ID);
+				String id = element.getAttribute(XMLConst.ID).replace("ID-","");
 				medicine.setId(Integer.parseInt(id));
 
 				String name = element.getElementsByTagName(XMLConst.NAME).item(0).getTextContent();
@@ -172,10 +172,12 @@ public class DOMParser implements DAO {
 
 		NamedNodeMap attributes = element.getElementsByTagName(XMLConst.PRICE).item(0).getAttributes();
 
-		String currency = attributes.getNamedItem(XMLConst.CURRENCY).getNodeValue();
-
 		Price price = new Price();
-		price.setCurrency(currency);
+		Node namedItem = attributes.getNamedItem(XMLConst.CURRENCY);
+		if (namedItem != null) {
+			String currency = namedItem.getNodeValue();
+			price.setCurrency(currency);
+		}
 		price.setValue(Double.parseDouble(priceValue));
 
 		return price;

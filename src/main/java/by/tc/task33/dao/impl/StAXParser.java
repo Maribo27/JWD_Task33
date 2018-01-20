@@ -60,6 +60,7 @@ public class StAXParser implements DAO {
 	}
 
 	private void parseElements(XMLEventReader eventReader) throws XMLStreamException {
+
 		while(eventReader.hasNext()) {
 			XMLEvent event = eventReader.nextEvent();
 
@@ -136,8 +137,10 @@ public class StAXParser implements DAO {
 				logger.info(DAOMessages.CREATE_MEDICINE);
 				medicine = new Medicine();
 				attributes = startElement.getAttributes();
-				attribute = attributes.next().getValue();
-				medicine.setId(Integer.parseInt(attribute));
+				if (attributes.hasNext()) {
+					attribute = attributes.next().getValue().replace("ID-", "");
+					medicine.setId(Integer.parseInt(attribute));
+				}
 				medicines.add(medicine);
 				break;
 			case XMLConst.ANALOGS:
@@ -154,16 +157,20 @@ public class StAXParser implements DAO {
 				logger.info(DAOMessages.CREATE_VERSION);
 				medicineType = new MedicineType();
 				attributes = startElement.getAttributes();
-				attribute = attributes.next().getValue();
-				medicineType.setType(attribute);
+				if (attributes.hasNext()) {
+					attribute = attributes.next().getValue();
+					medicineType.setType(attribute);
+				}
 				versions.add(medicineType);
 				break;
 			case XMLConst.PRICE:
 				logger.info(DAOMessages.CREATE_PRICE);
 				price = new Price();
 				attributes = startElement.getAttributes();
-				attribute = attributes.next().getValue();
-				price.setCurrency(attribute);
+				if (attributes.hasNext()) {
+					attribute = attributes.next().getValue();
+					price.setCurrency(attribute);
+				}
 				medicineType.setPrice(price);
 				break;
 			case XMLConst.DOSAGE:

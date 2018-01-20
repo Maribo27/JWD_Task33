@@ -1,5 +1,7 @@
 package by.tc.task33.entity;
 
+import java.util.Objects;
+
 public class Dosage {
     private String dose;
     private String frequency;
@@ -27,18 +29,14 @@ public class Dosage {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Dosage dosage = (Dosage) o;
-
-        if (dose != null ? !dose.equals(dosage.dose) : dosage.dose != null) return false;
-        return frequency != null ? frequency.equals(dosage.frequency) : dosage.frequency == null;
+        return Objects.equals(dose, dosage.dose) &&
+                Objects.equals(frequency, dosage.frequency);
     }
 
     @Override
     public int hashCode() {
-        int result = dose != null ? dose.hashCode() : 0;
-        result = 31 * result + (frequency != null ? frequency.hashCode() : 0);
-        return result;
+        return Objects.hash(dose, frequency);
     }
 
     @Override
